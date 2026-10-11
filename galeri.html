@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="img/kambing1.jpg" type="image/jpeg">
+  <meta name="description" content="Galeri kambing PT ZIZU PUTERA FARM">
+  <title>PT Zizu | Dokumentasi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:20px 0}
+    .upload-btn{display:inline-block;background:#111;color:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:700}
+    .upload-btn input{display:none}
+    .gallery-note{font-size:.92rem;opacity:.75}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .photo-card{position:relative;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10)}
+    .photo-card img{display:block;width:100%;height:230px;object-fit:cover}
+    .photo-card .photo-name{padding:10px 12px;font-weight:600}
+    .delete-photo{position:absolute;top:10px;right:10px;border:0;background:#d62828;color:#fff;padding:7px 10px;border-radius:8px;cursor:pointer;font-weight:700}
+    .empty-gallery{padding:25px;text-align:center;border:2px dashed #ccc;border-radius:14px}
+  </style>
+</head>
+
+<header class="navbar">
+        <div class="container nav-wrap">
+            <a class="logo" href="index.html">
+                <img src="img/kambing1.jpg" width="14%" alt="PT Zizu Putera Farm">
+                <span>PT ZIZU PUTERA FARM</span>
+            </a>
+    <button class="menu-toggle">☰</button>
+     <nav id="navMenu">
+        <a href="index.html">BERANDA</a>
+        <a class="active" href="produk.html">DAFTAR PENJUALAN KAMBING</a>
+        <a href="galeri.html">DOKUMENTASI KAMBING</a>
+        <a href="pemesanan.html">PEMESANAN KAMBING</a>
+         <a href="testimoni.html">TESTIMONI</a>
+        <a href="lokasi.html">LOKASI</a>
+        <a href="kontak.html">KONTAK</a>
+      </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="page-title">
+      <h2 class="eyebrow">DOKUMENTASI KAMBING</h2>
+      <h1></h1>
+      <p> </p>
+    </div>
+
+    <div class="gallery-tools">
+      <label class="upload-btn">
+        Kambing
+        <input id="photoInput" type="file" accept="image/*" multiple>
+      </label>
+      <button id="clearPhotos" type="" class="upload-btn" style=""></button>
+      
+    </div>
+
+    <div id="gallery" class="gallery"></div>
+<p class="testimonial-note">
+        Notes : Dokumentasi kambing hanya hanya sekali upload, dan tidak bisa dihapus
+      </p>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="copyright">@ 2025/2026<span id=""></span> PT Zizu Putera Farm</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  const STORAGE_KEY = 'zizu_putera_farm_gallery_v1';
+  const gallery = document.getElementById('gallery');
+  const input = document.getElementById('photoInput');
+  const clearBtn = document.getElementById('clearPhotos');
+
+  const defaultPhotos = [
+   
+  ];
+
+  function getPhotos(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+    catch(e) { return []; }
+  }
+
+  function savePhotos(items) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }
+
+  function render(){
+    gallery.innerHTML = '';
+    defaultPhotos.forEach(function(item){
+      const card = document.createElement('div');
+      card.className = 'photo-card';
+      card.innerHTML = '<img src="' + item[0] + '" alt="' + item[1] + '"><div class="photo-name">' + item[1] + '</div>';
+      gallery.appendChild(card);
+    });
+
+    const custom = getPhotos();
+    custom.forEach(function(item, index){
+      const card = document.createElement('div');
+      card.className = 'photo-card';
+      card.innerHTML = '<img src="' + item.data + '" alt="' + (item.name || 'Foto kambing') + '">'
+        
+        + '<div class="photo-name">' + (item.name || 'Foto kambing') + '</div>';
+      gallery.appendChild(card);
+    });
+
+    if (!defaultPhotos.length && !custom.length) {
+      gallery.innerHTML = '<div class="empty-gallery">Belum ada foto</div>';
+    }(
+      function addFloatingWA() {
+    if (document.getElementById('floatingWhatsApp')) return;
+    const a = document.createElement('a');
+    a.id = 'floatingWhatsApp';
+    a.href = WA_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = '💬 Pesan via WhatsApp';
+    a.setAttribute('aria-label', 'Pesan kambing via WhatsApp');
+    a.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:9999;background:#25D366;color:#fff;text-decoration:none;padding:13px 18px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.2);font-family:Arial,sans-serif;';
+    document.body.appendChild(a);
+  }
+    )
+  }
+
+  input.addEventListener('change', function(){
+    const files = Array.from(input.files || []);
+    if (!files.length) return;
+
+    const existing = getPhotos();
+    let pending = files.length;
+    const added = [];
+
+    files.forEach(function(file){
+      if (!file.type.startsWith('image/')) {
+        pending--;
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e){
+        added.push({name:file.name, data:e.target.result});
+        pending--;
+        if (pending === 0) {
+          try {
+            savePhotos(existing.concat(added));
+            render();
+            alert(added.length + ' foto berhasil ditambahkan.');
+          } catch(err) {
+            alert('Foto terlalu besar untuk penyimpanan browser. Coba pilih foto yang lebih kecil.');
+          }
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+    input.value = '';
+  });
+
+
+  gallery.addEventListener(' ', function(e){
+    if (!e.target.classList.contains('delete-photo')) return;
+    const index = Number(e.target.dataset.index);
+    const items = getPhotos();
+    items.splice(index, 1);
+    savePhotos(items);
+    render();
+  });
+
+
+  clearBtn.addEventListener(' ', function(){
+    if (confirm('Hapus semua foto tambahan yang tersimpan di browser ini?')) {
+      localStorage.removeItem(STORAGE_KEY);
+      render();
+    }
+  });
+
+  render();
+})();
+</script>
+
+<script>
+(function () {
+  const WA_NUMBER = "6287774402822";
+  const WA_URL = "https://wa.me/6287774402822?text=Halo%20PT%20ZIZU%20PUTERA%20FARM%2C%20saya%20ingin%20bertanya%20dan%20memesan%20kambing.";
+
+  function updateWhatsAppLinks() {
+    document.querySelectorAll('a[href*="wa.me"], a[href^="tel:"]').forEach(function(a) {
+      const href = a.getAttribute('href') || '';
+      if (href.includes('wa.me')) {
+        const oldText = href.includes('?text=') ? href.substring(href.indexOf('?text=')) : '';
+        a.href = 'https://wa.me/' + WA_NUMBER + (oldText || '?text=' + encodeURIComponent('Halo PT ZIZU PUTERA FARM, saya ingin bertanya dan memesan kambing.'));
+        a.target = '_blank';
+        a.rel = 'noopener';
+      } else if (href.startsWith('tel:')) {
+        a.href = 'tel:+' + WA_NUMBER;
+      }
+    });
+  }
+
+  function addFloatingWA() {
+    if (document.getElementById('floatingWhatsApp')) return;
+    const a = document.createElement('a');
+    a.id = 'floatingWhatsApp';
+    a.href = WA_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = '💬 KLIK PESAN VIA WHATSAP';
+    a.setAttribute('aria-label', 'Pesan kambing via WhatsApp');
+    a.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:9999;background:#25D366;color:#fff;text-decoration:none;padding:13px 18px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.2);font-family:Arial,sans-serif;';
+    document.body.appendChild(a);
+  }
+
+  updateWhatsAppLinks();
+  addFloatingWA();
+  new MutationObserver(function() {
+    updateWhatsAppLinks();
+    addFloatingWA();
+  }).observe(document.body, {childList:true,subtree:true});
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="img/kambing1.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+
+  <title>PT Zizu | Kontak</title>
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+ <header class="navbar">
+        <div class="container nav-wrap">
+            <a class="logo" href="index.html">
+                <img src="img/kambing1.jpg" width="14%" alt="PT Zizu Putera Farm">
+                <span>PT ZIZU PUTERA FARM</span>
+            </a>
+            <button class="menu-toggle">☰</button>
+     <nav id="navMenu">
+        <a href="index.html">BERANDA</a>
+        <a class="active" href="produk.html">DAFTAR PENJUALAN KAMBING</a>
+        <a href="galeri.html">DOKUMENTASI KAMBING</a>
+        <a href="pemesanan.html">PEMESANAN KAMBING</a>
+         <a href="testimoni.html">TESTIMONI</a>
+        <a href="lokasi.html">LOKASI</a>
+        <a href="kontak.html">KONTAK</a>
+      </nav>
+  </div>
+</header>
+
+
+  <!-- ==================== KONTEN UTAMA ==================== -->
+  <main class="section">
+    <div class="container narrow">
+
+      <div class="page-title">
+        <span class="eyebrow">HUBUNGI KAMI</span>
+
+        <h1>📞 KONTAK PENJUAL</h1>
+
+        <p>
+          Konsultasikan kebutuhan kambing Anda.
+        </p>
+      </div>
+
+
+      <!-- ==================== DAFTAR KONTAK ==================== -->
+      <div class="contact-list">
+
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/6287774402822?text=Halo%20PT%20ZIZU%20PUTERA%20FARM%2C%20saya%20ingin%20bertanya%20dan%20memesan%20kambing."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬
+          <strong>WhatsApp</strong>
+          <span>+62 877-7440-2822</span>
+        </a>
+
+
+        <!-- Telepon -->
+        <a href="tel:+6287774402822">
+          📞
+          <strong>Telepon</strong>
+          <span>+62 877-7440-2822</span>
+        </a>
+
+
+        <!-- Email -->
+        <a href="mailto:ptizuzuputerafarm@gmail.com">
+          ✉️
+          <strong>Email</strong>
+          <span>zizuputrafarm@gmail.com</span>
+        </a>
+
+
+        <!-- Alamat -->
+        <a href="lokasi.html">
+          📍
+          <strong>Alamat</strong>
+          <span>Sukamanah, Pandeglang, Banten 42262</span>
+        </a>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="copyright">@ 2025/2026<span id=""></span> PT Zizu Putera Farm</div>
+  </footer>
+
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      const WA_NUMBER = "6287774402822";
+
+      const WA_MESSAGE =
+        "Halo PT ZIZU PUTERA FARM, saya ingin bertanya dan memesan kambing.";
+
+      const WA_URL =
+        "https://wa.me/" +
+        WA_NUMBER +
+        "?text=" +
+        encodeURIComponent(WA_MESSAGE);
+
+
+      /* ==================== UPDATE LINK WHATSAPP ==================== */
+      function updateWhatsAppLinks() {
+        const links = document.querySelectorAll(
+          'a[href*="wa.me"], a[href^="tel:"]'
+        );
+
+        links.forEach(function (link) {
+          const href = link.getAttribute("href") || "";
+
+          /* Link WhatsApp */
+          if (href.includes("wa.me")) {
+            link.href = WA_URL;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+          }
+
+          /* Link Telepon */
+          else if (href.startsWith("tel:")) {
+            link.href = "tel:+" + WA_NUMBER;
+          }
+        });
+      }
+
+
+      /* ==================== TOMBOL WHATSAPP MELAYANG ==================== */
+      function addFloatingWhatsApp() {
+        if (document.getElementById("floatingWhatsApp")) {
+          return;
+        }
+
+        const link = document.createElement("a");
+
+        link.id = "floatingWhatsApp";
+        link.href = WA_URL;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        link.innerHTML = "💬 Pesan via WhatsApp";
+
+        link.setAttribute(
+          "aria-label",
+          "Pesan kambing via WhatsApp"
+        );
+
+        link.style.cssText = `
+          position: fixed;
+          right: 18px;
+          bottom: 18px;
+          z-index: 9999;
+
+          background: #25D366;
+          color: #ffffff;
+
+          text-decoration: none;
+          padding: 13px 18px;
+
+          border-radius: 999px;
+
+          font-weight: 700;
+          font-family: Arial, sans-serif;
+
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+
+          transition: transform 0.2s ease;
+        `;
+
+        link.addEventListener("mouseenter", function () {
+          link.style.transform = "scale(1.05)";
+        });
+
+        link.addEventListener("mouseleave", function () {
+          link.style.transform = "scale(1)";
+        });
+
+        document.body.appendChild(link);
+      }
+
+
+      /* ==================== JALANKAN ==================== */
+      updateWhatsAppLinks();
+      addFloatingWhatsApp();
+
+
+      /* ==================== MONITOR PERUBAHAN DOM ==================== */
+      const observer = new MutationObserver(function () {
+        updateWhatsAppLinks();
+        addFloatingWhatsApp();
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
+

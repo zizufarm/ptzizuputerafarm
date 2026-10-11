@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="img/kambing1.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+
+  <title>PT Zizu | Testimoni</title>
+
+  <style>
+    .testimonial-intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    .testimonial-form {
+      display: grid;
+      gap: 15px;
+      max-width: 700px;
+      margin: 0 auto 35px;
+      padding: 24px;
+      background: #fff;
+      border: 1px solid #e7ebe7;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    }
+
+    .testimonial-form label {
+      display: grid;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .testimonial-form input,
+    .testimonial-form textarea,
+    .testimonial-form select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d5ddd7;
+      border-radius: 9px;
+      font: inherit;
+    }
+
+    .testimonial-form input[type="file"] {
+      background: #f7faf7;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #e7ebe7;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.08);
+    }
+
+    .testimonial-card img {
+     width: 100%; 
+     height: 300px; 
+     object-fit: contain; 
+     object-position: center; 
+     display: block; 
+     background-color: #ffffff;
+    }
+
+    .testimonial-body {
+      padding: 18px;
+    }
+
+    .testimonial-stars {
+      color: #e5a100;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-name {
+      margin: 0 0 6px;
+    }
+
+    .testimonial-meta {
+      color: #68756e;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-message {
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .testimonial-delete {
+      background: #c62828;
+      color: #fff;
+      border: 0;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .testimonial-empty {
+      grid-column: 1 / -1;
+      padding: 25px;
+      text-align: center;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+    }
+
+    .testimonial-note {
+      text-align: center;
+      color: #68756e;
+      font-size: 13px;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-wrap">
+
+      <a class="logo" href="index.html">
+        <img src="img/kambing1.jpg"
+             width="14%"
+             alt="PT Zizu Putera Farm">
+        <span>PT ZIZU PUTERA FARM</span>
+      </a>
+
+      <button class="menu-toggle" type="button">☰</button>
+
+      <nav id="navMenu">
+        <a href="index.html">BERANDA</a>
+        <a href="produk.html">DAFTAR PENJUALAN KAMBING</a>
+        <a href="galeri.html">DOKUMENTASI KAMBING</a>
+        <a href="pemesanan.html">PEMESANAN KAMBING</a>
+        <a class="active" href="testimoni.html">TESTIMONI</a>
+        <a href="lokasi.html">LOKASI</a>
+        <a href="kontak.html">KONTAK</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- KONTEN TESTIMONI -->
+  <main class="section">
+    <div class="container">
+
+      <div class="page-title testimonial-intro">
+        <span class="eyebrow">PENGALAMAN PEMBELI</span>
+        <h1>⭐ TESTIMONI KONSUMEN</h1>
+        <p>
+          Bagikan pengalaman Anda membeli kambing
+          di PT ZIZU PUTERA FARM.
+        </p>
+      </div>
+
+      <!-- FORM TAMBAH TESTIMONI -->
+      <form id="testimonialForm" class="testimonial-form">
+
+        <h2>Tambah Testimoni Konsumen</h2>
+
+        <label for="customerName">
+          Nama Konsumen
+          <input
+            type="text"
+            id="customerName"
+            maxlength="80"
+            placeholder="Masukkan nama konsumen"
+            required>
+        </label>
+
+        <label for="customerType">
+          Kebutuhan Pembelian
+          <select id="customerType">
+            <option value="Aqiqah">Aqiqah</option>
+            <option value="Qurban">Qurban</option>
+            <option value="Peternakan">Peternakan</option>
+            <option value="Peliharaan">Peliharaan</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </label>
+
+        <label for="customerMessage">
+          Isi Testimoni
+          <textarea
+            id="customerMessage"
+            rows="4"
+            maxlength="1000"
+            placeholder="Tuliskan pengalaman Anda..."
+            required></textarea>
+        </label>
+
+        <label for="customerPhoto">
+          Upload Foto Testimoni
+          <input
+            type="file"
+            id="customerPhoto"
+            accept="image/*">
+        </label>
+
+        <p class="testimonial-note">
+          Foto bersifat opsional. Maksimal ukuran foto 1,5 MB.
+        </p>
+
+        <button
+          class="btn btn-primary full"
+          type="submit">
+          ➕ TAMBAHKAN TESTIMONI
+        </button>
+
+      </form>
+
+      <!-- DAFTAR TESTIMONI -->
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow"> </span>
+          <h2>Testimoni Pelanggan</h2>
+        </div>
+      </div>
+
+      <div
+        id="testimonialList"
+        class="testimonial-grid"
+        aria-live="polite">
+      </div>
+
+      <p class="testimonial-note">
+        Notes : Testimoni tersimpan di browser perangkat ini, Foto hanya sekali upload, dan tidak bisa dihapus
+      </p>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="copyright">
+      © 2026 PT ZIZU PUTERA FARM
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- JAVASCRIPT TESTIMONI -->
+  <script>
+    (function () {
+      const STORAGE_KEY = "zizu_putera_testimonials_v1";
+
+      const form = document.getElementById("testimonialForm");
+      const list = document.getElementById("testimonialList");
+      const photoInput = document.getElementById("customerPhoto");
+
+      function getTestimonials() {
+        try {
+          return JSON.parse(
+            localStorage.getItem(STORAGE_KEY) || "[]"
+          );
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function renderTestimonials() {
+        const items = getTestimonials();
+
+        list.replaceChildren();
+
+        if (items.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "testimonial-empty";
+          empty.textContent =
+            "Belum ada testimoni konsumen.";
+          list.appendChild(empty);
+          return;
+        }
+
+        items.slice().reverse().forEach(function (item) {
+          const card = document.createElement("article");
+          card.className = "testimonial-card";
+
+          if (item.photo) {
+            const img = document.createElement("img");
+            img.src = item.photo;
+            img.alt = "Foto testimoni " + item.name;
+            card.appendChild(img);
+          }
+
+          const body = document.createElement("div");
+          body.className = "testimonial-body";
+
+          const stars = document.createElement("div");
+          stars.className = "testimonial-stars";
+          stars.textContent = "★★★★★";
+
+          const name = document.createElement("h3");
+          name.className = "testimonial-name";
+          name.textContent = item.name;
+
+          const meta = document.createElement("div");
+          meta.className = "testimonial-meta";
+          meta.textContent =
+            item.type + " • " + item.date;
+
+          const message = document.createElement("p");
+          message.className = "testimonial-message";
+          message.textContent = "“" + item.message + "”";
+
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.className = "testimonial-delete";
+          deleteButton.textContent = "";
+
+          deleteButton.addEventListener("click", function () {
+            if (!confirm("Hapus testimoni ini?")) return;
+
+            const current = getTestimonials();
+            const index = current.findIndex(
+              function (entry) {
+                return entry.id === item.id;
+              }
+            );
+
+            if (index !== -1) {
+              current.splice(index, 1);
+              localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(current)
+              );
+            }
+
+            renderTestimonials();
+          });
+
+          body.append(
+            stars,
+            name,
+            meta,
+            message,
+            deleteButton
+          );
+
+          card.appendChild(body);
+          list.appendChild(card);
+        });
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document
+          .getElementById("customerName")
+          .value.trim();
+
+        const type = document
+          .getElementById("customerType")
+          .value;
+
+        const message = document
+          .getElementById("customerMessage")
+          .value.trim();
+
+        const file = photoInput.files[0];
+
+        if (!name || !message) {
+          alert("Nama dan isi testimoni wajib diisi.");
+          return;
+        }
+
+        function saveTestimonial(photoData) {
+          const items = getTestimonials();
+
+          items.push({
+            id: Date.now().toString() +
+                Math.random().toString(36).slice(2),
+            name: name,
+            type: type,
+            message: message,
+            photo: photoData || "",
+            date: new Date().toLocaleDateString("id-ID")
+          });
+
+          try {
+            localStorage.setItem(
+              STORAGE_KEY,
+              JSON.stringify(items)
+            );
+
+            form.reset();
+            renderTestimonials();
+
+            alert("Testimoni berhasil ditambahkan!");
+          } catch (error) {
+            alert(
+              "Penyimpanan browser penuh. " +
+              "Gunakan foto yang lebih kecil."
+            );
+          }
+        }
+
+        if (!file) {
+          saveTestimonial("");
+          return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+          alert("Pilih file berupa gambar.");
+          return;
+        }
+
+        if (file.size > 1.5 * 1024 * 1024) {
+          alert("Ukuran foto maksimal 1,5 MB.");
+          return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+          saveTestimonial(event.target.result);
+        };
+
+        reader.onerror = function () {
+          alert("Foto gagal dibaca. Coba lagi.");
+        };
+
+        reader.readAsDataURL(file);
+      });
+
+      // Menu navigasi untuk HP
+      const menuButton = document.querySelector(".menu-toggle");
+      const navMenu = document.getElementById("navMenu");
+
+      if (menuButton && navMenu) {
+        menuButton.addEventListener("click", function () {
+          navMenu.classList.toggle("open");
+        });
+      }
+
+      renderTestimonials();
+    })();
+  </script>
+
+</body>
+</html>
