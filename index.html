@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/kambing1.jpg" type="image/jpeg">
+  <meta name="description" content="Website penjualan kambing sehat dan berkualitas. Pilih kambing, lihat detail, lalu pesan melalui WhatsApp.">
+  <title>PT Zizu | Beranda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<header class="navbar">
+  <div class="container nav-wrap">
+   <h2>PT ZIZU PUTERA FARM</h2>
+    <h3><img src="img/kambing1.jpg" width="35%"></h3>
+    <button class="menu-toggle">☰</button>
+
+     <nav id="navMenu">
+        <a href="index.html">BERANDA</a>
+        <a class="active" href="produk.html">DAFTAR PENJUALAN KAMBING</a>
+        <a href="galeri.html">DOKUMENTASI KAMBING</a>
+        <a href="pemesanan.html">PEMESANAN KAMBING</a>
+        <a href="testimoni.html">TESTIMONI</a>
+        <a href="lokasi.html">LOKASI</a>
+        <a href="kontak.html">KONTAK</a>
+      </nav>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="container hero-content">
+    <div>
+      <span class="badge">TERNAK BERKUALITAS • AMAN • BERKAH</span>
+      <h2>TEMUKAN KAMBING PILIHAN UNTUK ANDA</h2>
+      <p>Kambing sehat, terawat, dan siap dipilih. Sesuaikan kebutuhan anda untuk ternak dll, info selanjutnya bisa pesan langsung melalui WhatsApp.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="produk.html">Lihat Kambing</a>
+        <a class="btn btn-light" href="https://wa.me/6287774402822?text=Halo%20PT%20ZIZU%20PUTERA%20FARM%2C%20saya%20ingin%20bertanya%20dan%20memesan%20kambing." target="_blank" rel="noopener">💬 Klik WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3><img src="img/kambing5.jpg" width="100%"></h3>
+      <h3>PROMO</h3>
+      <p>Diskon khusus untuk pembelian kambing tertentu.</p>
+      <a href="produk.html">Cek koleksi →</a>
+    </div>
+  </div>
+</section>
+
+<section class="promo">
+  <div class="container promo-inner">
+    <div><strong>🔥PROMO SPESIAL</strong><br>Harga terbaik untuk pembelian langsung di kandang.</div>
+    <a class="btn btn-dark" href="pemesanan.html">KLIK TANYA HARGA</a>
+  </div>
+</section>
+
+
+
+
+
+<section class="section soft">
+  <div class="container">
+    <div class="section-heading center"><div><span class="eyebrow">KENAPA KAMI?</span><h2>Belanja Lebih Mudah</h2></div></div>
+    <div class="features">
+      <div class="feature"><span>❤️</span><h3>Sehat & Terawat</h3><p>Kambing dipelihara dan dirawat dengan baik.</p></div>
+      <div class="feature"><span>💰</span><h3>Harga Transparan</h3><p>Informasi harga dan spesifikasi ditampilkan jelas.</p></div>
+      <div class="feature"><span>🚚</span><h3>Siap Diantar</h3><p>Hubungi kami untuk pilihan pengiriman.</p></div>
+      <div class="feature"><span>💬</span><h3>Respon Cepat</h3><p>Konsultasikan pilihan Anda melalui WhatsApp.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cta">
+    <div><span class="eyebrow">BUTUH BANTUAN?</span><h2>Belum tahu kambing yang cocok?</h2><p>Isi kebutuhan Anda dan kami bantu memberikan pilihan.</p></div>
+    <a class="btn btn-primary" href="pemesanan.html"><h3>Isi From Pembelian Kambing</h3></a>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><h3>PT ZIZU PUTERA FARM</h3><img src="img/kambing1.jpg" width="14%" alt="PT Zizu Putera Farm"><p>Penjualan kambing sehat dan berkualitas untuk kebutuhan keluarga, aqiqah, qurban, peternakan, dan lainnya.</p></div>
+    <div><h4>MENU</h4><a href="index.html">BERANDA</a><a href="produk.html">DAFTAR PENJUALAN KAMBING</a><a href="galeri.html">DOKUMENTASI KAMBING</a><a href="lokasi.html">LOKASI</a><a href="pemesanan.html">PEMESANAN KAMBING</a></div>
+
+    <div><h4>KONTAK</h4><p>📞 +62 877-7440-2822</p><p>📍 Kp Cigendis, Kec Menes, Pandeglang, Banten</p><a href="https://maps.app.goo.gl/pTQ7cKmNkGqybruj9" target="_blank">Buka Google Maps →</a></div>
+  </div>
+  <div class="copyright">@ 2025/2026<span id=""></span> PT Zizu Putera Farm</div>
+</footer>
+<script src="script.js"></script>
+<script>renderFeatured();</script>
+
+
+<script>
+(function () {
+  const WA_NUMBER = "6287774402822";
+  const WA_URL = "https://wa.me/6287774402822?text=Halo%20PT%20ZIZU%20PUTERA%20FARM%2C%20saya%20ingin%20bertanya%20dan%20memesan%20kambing.";
+
+  function updateWhatsAppLinks() {
+    document.querySelectorAll('a[href*="wa.me"], a[href^="tel:"]').forEach(function(a) {
+      const href = a.getAttribute('href') || '';
+      if (href.includes('wa.me')) {
+        const oldText = href.includes('?text=') ? href.substring(href.indexOf('?text=')) : '';
+        a.href = 'https://wa.me/' + WA_NUMBER + (oldText || '?text=' + encodeURIComponent('Halo PT ZIZU PUTERA FARM, saya ingin bertanya dan memesan kambing.'));
+        a.target = '_blank';
+        a.rel = 'noopener';
+      } else if (href.startsWith('tel:')) {
+        a.href = 'tel:+' + WA_NUMBER;
+      }
+    });
+  }
+
+  function addFloatingWA() {
+    if (document.getElementById('floatingWhatsApp')) return;
+    const a = document.createElement('a');
+    a.id = 'floatingWhatsApp';
+    a.href = WA_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = '💬 KLIK PESANAN KAMBING VIA WHATSAP';
+    a.setAttribute('aria-label', 'Pesan kambing via WhatsApp');
+    a.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:9999;background:#25D366;color:#fff;text-decoration:none;padding:13px 18px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.2);font-family:Arial,sans-serif;';
+    document.body.appendChild(a);
+  }
+
+  updateWhatsAppLinks();
+  addFloatingWA();
+  new MutationObserver(function() {
+    updateWhatsAppLinks();
+    addFloatingWA();
+  }).observe(document.body, {childList:true,subtree:true});
+})();
+</script>
+
+</body>
+</html>
