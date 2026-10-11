@@ -357,22 +357,6 @@ document
       .classList.toggle("open");
   });
 
-// Menu navigasi untuk HP
-const menuButton = document.querySelector(".menu-toggle");
-const navMenu = document.getElementById("navMenu");
-
-if (menuButton && navMenu) {
-  menuButton.addEventListener("click", function () {
-    navMenu.classList.toggle("open");
-
-    const isOpen = navMenu.classList.contains("open");
-    menuButton.setAttribute("aria-expanded", isOpen);
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Tutup menu" : "Buka menu"
-    );
-  });
-}
 
 
 // ==============================
